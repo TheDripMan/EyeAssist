@@ -3,7 +3,7 @@
 	"package": "dev.thedripman.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
-		"ExampleMixin"
+		"MouseMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

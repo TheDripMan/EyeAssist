@@ -1,20 +1,39 @@
 package dev.thedripman;
 
-import net.fabricmc.api.ModInitializer;
-import net.minecraft.block.Block;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.client.options.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EyeOfEnderEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.glfw.GLFW;
 
-public class EyeAssist implements ModInitializer {
+import java.util.List;
+
+public class EyeAssist implements ClientModInitializer {
 	public static final String MOD_ID = "eyeassist";
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-	@Override
-	public void onInitialize() {
+	public static final KeyBinding assistKey = new KeyBinding("eyeassist.key.bind", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V, "eyeassist.key.category");
 
+	@Override
+	public void onInitializeClient() {
+		KeyBindingHelper.registerKeyBinding(assistKey);
+
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			if (RotationUtil.isPlaying() && assistKey.isPressed()) {
+				List<EyeOfEnderEntity> entityList = RotationUtil.getEntitiesAroundPlayer(50F, EyeOfEnderEntity.class);
+				if (!entityList.isEmpty()) {
+					float[] yp = RotationUtil.getRotationsNeeded(entityList.get(0));
+					RotationUtil.setRotations(yp[1], yp[0]);
+				}
+			}
+		});
 	}
 }

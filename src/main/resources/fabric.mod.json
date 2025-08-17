@@ -3,19 +3,18 @@
 	"id": "eyeassist",
 	"version": "${version}",
 	"name": "EyeAssist",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Provide assistance to snap the crosshair onto the Eye of Ender.",
 	"authors": [
-		"Me!"
+		"TheDripMan and hlte188"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/TheDripMan/EyeAssist"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/eyeassist/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
+		"client": [
 			"dev.thedripman.EyeAssist"
 		]
 	},
@@ -27,8 +26,5 @@
 		"minecraft": "~1.16.1",
 		"java": ">=8",
 		"fabric": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
