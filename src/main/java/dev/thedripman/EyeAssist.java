@@ -31,7 +31,7 @@ public class EyeAssist implements ClientModInitializer {
 				List<EyeOfEnderEntity> entityList = RotationUtil.getEntitiesAroundPlayer(50F, EyeOfEnderEntity.class);
 				if (!entityList.isEmpty()) {
 					float[] yp = RotationUtil.getRotationsNeeded(entityList.get(0));
-					RotationUtil.setRotations(yp[1], yp[0]);
+					RotationUtil.setRotations(yp[0], yp[1]);
 				}
 			}
 		});
