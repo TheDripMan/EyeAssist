@@ -1,30 +1,48 @@
 {
 	"schemaVersion": 1,
-	"id": "eyeassist",
+	"id": "extra-options",
 	"version": "${version}",
-	"name": "EyeAssist",
-	"description": "Provide assistance to snap the crosshair onto the Eye of Ender.",
+	"name": "Extra Options",
+	"description": "Backports the 1.16.2+ options of reduced distortion effects and reduced fov effects, along with options fine-tuning what those sliders affect",
 	"authors": [
-		"TheDripMan and hlte188"
+		{
+			"name": "Void_X_Walker",
+			"contact": {
+				"homepage": "https://github.com/VoidXWalker"
+			}
+		}
+	],
+	"contributors": [
+		{
+			"name": "tildejustin",
+			"contact": {
+				"homepage": "https://github.com/tildejustin"
+			}
+		}
 	],
 	"contact": {
-		"sources": "https://github.com/TheDripMan/EyeAssist"
+		"homepage": "https://github.com/tildejustin/extra-options",
+		"sources": "https://github.com/tildejustin/extra-options",
+		"issues": "https://github.com/tildejustin/extra-options/issues"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/eyeassist/icon.png",
-	"environment": "*",
+	"license": "MIT",
+	"environment": "client",
+	"mixins": [
+		"extra-options.mixins.json"
+	],
 	"entrypoints": {
 		"client": [
-			"dev.thedripman.EyeAssist"
+			"me.voidxwalker.options.extra.ExtraOptions"
 		]
 	},
-	"mixins": [
-		"eyeassist.mixins.json"
-	],
 	"depends": {
-		"fabricloader": ">=0.17.2",
-		"minecraft": "~1.16.1",
-		"java": ">=8",
-		"fabric": "*"
+		"minecraft": ">1.15.2 <1.16.2",
+		"fabricloader": ">=0.15",
+		"speedrunapi": ">=2.0"
+	},
+	"custom": {
+		"speedrunapi": {
+			"config": "me.voidxwalker.options.extra.ExtraOptions"
+		}
 	}
 }
