@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "dev.thedripman.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"MouseMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
