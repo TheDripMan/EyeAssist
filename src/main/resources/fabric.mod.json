@@ -26,5 +26,6 @@
 		"minecraft": "~1.16.1",
 		"java": ">=8",
 		"fabric": "*"
-	}
+	},
+	"accessWidener": "eyeassist.accesswidener"
 }
